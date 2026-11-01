@@ -195,3 +195,5 @@ console.log(
     2,
   ),
 );
+
+execFileSync(runtimePython,[path.join(workspaceDir,'scripts/link-pptx.py')],{cwd:workspaceDir,stdio:'inherit'});
