@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "liveClaude": false,
+  "provider": "mock",
+  "boundaries": [
+    "Browser settings → local API with CORS",
+    "token authentication",
+    "current dataset and scenario → generation function",
+    "JSON answer → UI",
+    "bad token → visible error",
+    "token absent from localStorage"
+  ]
+}

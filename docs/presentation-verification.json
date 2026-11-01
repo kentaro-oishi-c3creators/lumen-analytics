@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "slides": 10,
+  "standaloneSvgs": true,
+  "keyboardNavigation": true,
+  "collectionImages": true,
+  "pdf": true,
+  "consoleErrors": []
+}

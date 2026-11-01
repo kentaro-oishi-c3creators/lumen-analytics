@@ -1,0 +1,44 @@
+{
+  "capturedAt": "2026-11-01T08:27:03.773Z",
+  "browser": "151.0.7922.173",
+  "viewport": {
+    "width": 1440,
+    "height": 1100
+  },
+  "baseUrl": "http://127.0.0.1:5173",
+  "consoleErrors": [],
+  "results": [
+    {
+      "story": "retail: filters, KPIs, CSV integrity, saved view, details",
+      "status": "passed",
+      "filteredRecords": 3,
+      "expectedActual": 401.51
+    },
+    {
+      "story": "manufacturing: filters, KPIs, CSV integrity, saved view, details",
+      "status": "passed",
+      "filteredRecords": 3,
+      "expectedActual": 37493
+    },
+    {
+      "story": "healthcare: filters, KPIs, CSV integrity, saved view, details",
+      "status": "passed",
+      "filteredRecords": 3,
+      "expectedActual": 6140
+    },
+    {
+      "story": "finance: filters, KPIs, CSV integrity, saved view, details",
+      "status": "passed",
+      "filteredRecords": 3,
+      "expectedActual": 704.57
+    },
+    {
+      "story": "AI scenario calculations, contextual demo answers, free text and endpoint validation",
+      "status": "passed"
+    },
+    {
+      "story": "390px mobile layout, navigation and AI overflow",
+      "status": "passed"
+    }
+  ]
+}
