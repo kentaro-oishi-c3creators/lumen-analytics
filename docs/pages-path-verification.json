@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "basePath": "/lumen-analytics/",
+  "productionBuild": true,
+  "realGitHubDeployment": false,
+  "routes": 6,
+  "pageErrors": [],
+  "httpErrors": []
+}
