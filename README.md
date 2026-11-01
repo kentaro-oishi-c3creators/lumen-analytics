@@ -25,6 +25,30 @@
 
 紹介スライド：左右矢印・Home・Endキー、自動再生、全画面、サムネイル移動、画面へのリンク、SVG/PDFダウンロード。業種一覧・操作例・最終スライドの図解カードはクリックできます。
 
+## スライドを書き出す
+
+[紹介スライド](https://kentaro-oishi-c3creators.github.io/lumen-analytics/#/story)の「書き出す」、またはページ下部の形式ボタンから、全10枚を保存できます。
+
+| 形式                                                                                             | 用途               | 内容                                                                                                |
+| ------------------------------------------------------------------------------------------------ | ------------------ | --------------------------------------------------------------------------------------------------- |
+| [HTML](https://kentaro-oishi-c3creators.github.io/lumen-analytics/lumen-design-story.html)       | ブラウザで持ち運ぶ | SVG・フォント・画面画像を内包した単体ファイル。オフラインでスライド送り・自動再生・全画面表示が可能 |
+| [PowerPoint](https://kentaro-oishi-c3creators.github.io/lumen-analytics/lumen-design-story.pptx) | 発表・編集         | 199個の文字オブジェクトと図解をネイティブの編集可能な要素として配置。操作画面は画像                 |
+| PDF                                                                                              | 閲覧・共有         | デザインを固定した全10枚                                                                            |
+| SVG ZIP                                                                                          | ベクター原稿       | フォント・画像を内包したSVG全10枚                                                                   |
+
+HTMLファイルを保存後、ブラウザで開いて利用できます。スライドの閲覧はオフラインで完結します。「実際に操作する」や図解内のリンクから公開ダッシュボードを開く場合のみインターネット接続が必要です。
+
+PowerPointの本文・図解は編集できます。スライドに貼ったダッシュボードのグラフや数字はスクリーンショットの一部なので個別には編集できません。書体は `Noto Sans CJK JP` を使用します。PowerPointの実アプリでは未検証ですが、LibreOfficeで全10枚をレンダリングして確認しています。
+
+通常のビルドでは追加のAPI・外部サービスを使いません。HTMLはビルド前に自動生成し、PPTXは生成済みファイルを利用します。元SVGやスライド情報とのハッシュを照合し、不一致ならビルドを停止して古い書き出しを公開しません。
+
+```bash
+npm run exports:html   # 単体HTMLを生成
+npm run exports:check  # 元スライド・HTML・PPTXの整合を確認
+```
+
+元スライドを変更してPPTXも再生成する場合は、開発サーバーを起動し、`@oai/artifact-tool` を含むCodexのプレゼンテーション実行環境で `npm run exports` を実行します。`CODEX_PRIMARY_RUNTIME_NODE_MODULES`・`CODEX_PRIMARY_RUNTIME_NODE`・`CODEX_PRIMARY_RUNTIME`・`CODEX_PRIMARY_RUNTIME_PYTHON` が必要です。`PRESENTATIONS_SKILL_DIR` でプレゼンテーション用スキルの場所も変更できます。元データは `src/slides.json`、SVGは `public/slides/` です。
+
 ## ローカル起動
 
 Node.js 24以上を推奨します。
@@ -67,7 +91,7 @@ bash scripts/publish-github.sh
 
 公開URLは `https://kentaro-oishi-c3creators.github.io/lumen-analytics/` です。2026年11月1日にGitHub Pagesへのデプロイ成功を確認しました。以後のmainへのpushも自動公開されます。
 
-Pages用ワークフローは `.github/workflows/pages.yml` に同梱しています。CIでは `npm ci`・8つのテスト・型チェック・Viteビルドを実行し、その成果物をPagesへ発行します。ClaudeのキーをGitHub Actionsに設定する必要はありません。
+Pages用ワークフローは `.github/workflows/pages.yml` に同梱しています。CIでは `npm ci`・9つのテスト・型チェック・Viteビルドを実行し、その成果物をPagesへ発行します。ClaudeのキーをGitHub Actionsに設定する必要はありません。
 
 ## Claude APIを接続
 

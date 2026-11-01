@@ -1,0 +1,52 @@
+{
+  "slideCount": 10,
+  "sourceHashes": {
+    "slides.json": "01bba4f9e1c1ad07955fc7ed9d067298f11d8003b89b2c3f26c893c391446d8f",
+    "01-opening.svg": "19c10e2f3a80dbf9f08ffb2cb2659da459ded21569accc1d09dfea3b20ec2ba6",
+    "02-overview.svg": "ebf7dcbbf9db2884e770333aed35be91e43cb3af81180da0c6481884dedb1c93",
+    "03-retail.svg": "70d2ee09fb31959d58cdb8788c211cf6c4bd55fdd31c3b0bd64bb1e537dd7619",
+    "04-manufacturing.svg": "43ae46ad756fefe0d7a5992900910e21ff533560769a641ada4d806ac0b799f9",
+    "05-healthcare.svg": "096c316bd0d0d31bb2e37b75f2d940c1aba0ec52567f43243fcc8f9602b7bc55",
+    "06-finance.svg": "30d81361b84c9ad3d05af0d9c487985e18b15600941f56f952b06c7594c2fd03",
+    "07-interaction.svg": "10dd46294df767c8f7e58f7150e32157f2e917c15491985192ead3f6a1a26414",
+    "08-ai.svg": "60a27dccf3422efec2447f5c8c7aac2b4ec8c7d6342aa7d7984d22065242ab14",
+    "09-architecture.svg": "24dda373e2057d0ce81663e3ad8d9330ee558c05afc2d0d6e4180d32bee74df7",
+    "10-closing.svg": "1584d87d0c535d7f4a74dc97ac80345ef812da5469023e879146fdd88123a448"
+  },
+  "files": {
+    "html": {
+      "name": "lumen-design-story.html",
+      "sha256": "4e172f2e5090c4cd85649e1a1958964d56282453ce6fa2ed4cf5fef7b27454c8",
+      "bytes": 6195253
+    },
+    "pptx": {
+      "name": "lumen-design-story.pptx",
+      "sha256": "3ba6ed9122d288864617cfce813df95dc730bb0e3c8e1e55ff818702a6ed6a62",
+      "bytes": 2307120
+    }
+  },
+  "nativeTextCounts": [
+    16,
+    28,
+    20,
+    17,
+    18,
+    15,
+    18,
+    19,
+    28,
+    20
+  ],
+  "nativeShapeCounts": [
+    25,
+    43,
+    29,
+    25,
+    32,
+    29,
+    33,
+    28,
+    43,
+    38
+  ]
+}

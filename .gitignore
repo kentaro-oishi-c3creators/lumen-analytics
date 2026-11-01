@@ -9,3 +9,5 @@ test-results/
 *.tsbuildinfo
 docs/verification-failure.png
 public/captures/retail-initial.png
+.export-build/
+.export-output/

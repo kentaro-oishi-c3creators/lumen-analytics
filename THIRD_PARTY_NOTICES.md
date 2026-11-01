@@ -14,3 +14,6 @@
 This project uses the Tableau name only to describe the source of inspiration for visual analytics interactions. It does not embed or redistribute Tableau software, logos, visual assets or workbooks, and is not affiliated with Salesforce/Tableau.
 
 All datasets, facility names and business scenarios are synthetic. Browser captures show this project's own UI.
+
+- fflate — MIT. Used to verify the PowerPoint ZIP package. https://github.com/101arrowz/fflate
+- @oai/artifact-tool — bundled Codex presentation authoring runtime. Used only to generate and validate the tracked PPTX; not shipped to browsers or required by the normal build.

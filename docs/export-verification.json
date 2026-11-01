@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "formats": [
+    "HTML",
+    "PPTX",
+    "PDF",
+    "SVG ZIP"
+  ],
+  "downloadContents": "exact match",
+  "offlineHtml": {
+    "slides": 10,
+    "allImagesLoaded": true,
+    "keyboard": true,
+    "autoplay": true,
+    "externalRequests": 0,
+    "mobileOverflow": false
+  },
+  "pptx": {
+    "slides": 10,
+    "nativeTextObjects": 199,
+    "sourceCropPreserved": true,
+    "renderedWith": "LibreOffice",
+    "powerPointAppVerified": false
+  },
+  "exportDialogKeyboard": true,
+  "mobileOverflow": false,
+  "pageErrors": []
+}

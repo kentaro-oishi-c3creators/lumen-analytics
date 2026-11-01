@@ -58,6 +58,11 @@ try {
     await page.locator('main h1').waitFor();
     if (route === 'story') await page.locator('.slide-img').evaluate((i) => i.decode());
   }
+  for (const filename of ['lumen-design-story.html', 'lumen-design-story.pptx']) {
+    const response = await fetch(url + filename);
+    assert.equal(response.status, 200);
+    assert.deepEqual(Buffer.from(await response.arrayBuffer()), await readFile('dist/' + filename));
+  }
   assert.deepEqual(errors, []);
   assert.deepEqual(failed, []);
   await writeFile(
@@ -69,6 +74,7 @@ try {
         productionBuild: true,
         realGitHubDeployment: false,
         routes: 6,
+        slideExports: ['HTML', 'PPTX'],
         pageErrors: errors,
         httpErrors: failed,
       },

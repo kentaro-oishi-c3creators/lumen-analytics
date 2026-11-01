@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import {
   ArrowDownToLine,
   ArrowLeft,
@@ -9,79 +9,78 @@ import {
   Pause,
   Play,
 } from 'lucide-react';
-export const slides = [
+import { Modal } from './components/UI';
+import slideData from './slides.json';
+export const slides = slideData;
+const exportFormats = [
   {
-    file: '01-opening',
-    title: 'データを、意思のある景色へ。',
-    note: '4業種の分析画面とAIコックピットを、実際の操作画面と図解で紹介します。',
-    href: '#/collection',
+    name: 'HTML',
+    href: './lumen-design-story.html',
+    extension: '.html',
+    label: 'HTMLで保存',
+    description: '1ファイルでオフライン再生',
   },
   {
-    file: '02-overview',
-    title: '4つの現場。4つの問い。',
-    note: '同じチャートを並べるのではなく、業務で最初に答えたい問いから画面を設計しました。',
-    href: '#/collection',
+    name: 'PowerPoint',
+    href: './lumen-design-story.pptx',
+    extension: '.pptx',
+    label: 'PowerPointで保存',
+    description: '文字・図解を編集できる10枚',
   },
   {
-    file: '03-retail',
-    title: 'Retail — 成長の理由を、探る。',
-    note: '期間・エリア・カテゴリーの3軸でKPIと全図表が連動。グラフからの絞り込みや明細ドリルダウンで、仮説を確かめられます。',
-    href: '#/retail',
+    name: 'PDF',
+    href: './lumen-design-story.pdf',
+    extension: '.pdf',
+    label: 'PDFで保存',
+    description: '閲覧・共有に使える10枚',
   },
   {
-    file: '04-manufacturing',
-    title: 'Manufacturing — 止めないために、見える化する。',
-    note: 'OEEを時間・性能・品質に分解し、生産計画との乖離やライン別の課題を読み解きます。',
-    href: '#/manufacturing',
-  },
-  {
-    file: '05-healthcare',
-    title: 'Healthcare — ケアの時間を、つくる。',
-    note: '患者フロー・来院数・待ち時間・診療科の負荷を俯瞰。経路配分は説明用モデルです。',
-    href: '#/healthcare',
-  },
-  {
-    file: '06-finance',
-    title: 'Finance — リスクを捉え、次の機会へ。',
-    note: '月末残高・配分・市場・リスクを横断。リスクは保有資産の加重平均で、相関を考慮したポートフォリオリスクではありません。',
-    href: '#/finance',
-  },
-  {
-    file: '07-interaction',
-    title: '触れるほど、見えてくる。',
-    note: 'ブラウザでフィルター、マーク選択、詳細表示を実際に操作して撮影した画面です。条件は全グラフ・明細・CSVに反映されます。',
-    href: '#/retail',
-  },
-  {
-    file: '08-ai',
-    title: 'AIと、仮説のその先へ。',
-    note: '需要・単価・販促費のスライダーを動かして、売上と利益を同時に比較。質問には表示中のコンテキストを渡します。初期状態はルールベースデモです。',
-    href: '#/ai',
-  },
-  {
-    file: '09-architecture',
-    title: '美しい体験を、開かれた構成で。',
-    note: 'フロントエンドはGitHub Pages。Claudeは別のNode.jsサーバーから接続。APIキーはブラウザに配信せず、サーバー環境変数で管理します。',
-    href: '#/ai',
-  },
-  {
-    file: '10-closing',
-    title: '次の意思決定を、ここから。',
-    note: 'すべて架空データのデザイン・プロトタイプです。TableauのWorkbookやTableau本体の埋め込みではありません。各画面へ移動して、実際に触れてみてください。',
-    href: '#/collection',
+    name: 'SVG',
+    href: './lumen-svg-slides.zip',
+    extension: '.zip',
+    label: 'SVGで保存',
+    description: 'ベクター原稿をまとめて取得',
   },
 ];
+function ExportLinks() {
+  return (
+    <div className="export-format-grid">
+      {exportFormats.map((format) => (
+        <a
+          key={format.name}
+          className="export-format-link"
+          href={format.href}
+          download
+          aria-label={format.label}
+        >
+          <div>
+            <span>{format.name}</span>
+            <small>{format.extension}</small>
+            <ArrowDownToLine size={16} />
+          </div>
+          <p>{format.description}</p>
+        </a>
+      ))}
+    </div>
+  );
+}
 export default function Story() {
   const [index, setIndex] = useState(0),
     [playing, setPlaying] = useState(false),
-    [fullscreen, setFullscreen] = useState(false);
+    [fullscreen, setFullscreen] = useState(false),
+    [exporting, setExporting] = useState(false);
+  const closeExport = useCallback(() => setExporting(false), []);
   const ref = useRef<HTMLDivElement>(null),
     thumbRef = useRef<HTMLDivElement>(null);
   const go = (delta: number) =>
     setIndex((i) => Math.max(0, Math.min(slides.length - 1, i + delta)));
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if ((e.target as HTMLElement).matches('input,textarea,select')) return;
+      if (
+        (e.target as HTMLElement).matches('input,textarea,select') ||
+        document.querySelector('[role="dialog"]')
+      )
+        return;
       if (['ArrowRight', 'PageDown', ' '].includes(e.key)) {
         e.preventDefault();
         go(1);
@@ -182,6 +181,16 @@ export default function Story() {
             <ArrowDownToLine size={14} />
             SVGを保存
           </a>
+          <button
+            className="button subtle"
+            onClick={() => {
+              setPlaying(false);
+              setExporting(true);
+            }}
+          >
+            <ArrowDownToLine size={14} />
+            書き出す
+          </button>
           <button className="button primary" onClick={toggleFullscreen}>
             <Expand size={14} />
             プレゼンテーション
@@ -313,16 +322,19 @@ export default function Story() {
           </button>
         ))}
       </div>
-      <div className="story-downloads">
-        <a className="text-button" href="./lumen-design-story.pdf" download>
-          <ArrowDownToLine size={13} />
-          全10枚をPDFで保存
-        </a>
-        <a className="text-button" href="./lumen-svg-slides.zip" download>
-          <ArrowDownToLine size={13} />
-          SVGデッキをまとめて保存
-        </a>
-      </div>
+      <section className="story-exports" aria-label="スライドの書き出し">
+        <div className="story-exports-heading">
+          <div>
+            <span className="eyebrow">TAKE THE STORY WITH YOU</span>
+            <h2>全10枚を、使いやすい形式で。</h2>
+          </div>
+          <span>HTML / PPTX / PDF / SVG</span>
+        </div>
+        <ExportLinks />
+        <p className="export-hint">
+          HTMLは画像・フォントを内包し、単体で再生できます。PowerPointは文字と図解を編集でき、ダッシュボード画面は画像として配置しています。
+        </p>
+      </section>
       <div className="story-notes">
         <p>{slide.note}</p>
         <a href={slide.href}>
@@ -330,6 +342,17 @@ export default function Story() {
           <ArrowUpRight size={13} />
         </a>
       </div>
+      {exporting && (
+        <Modal title="スライドを書き出す" onClose={closeExport}>
+          <div className="export-dialog-content">
+            <p>紹介スライド全10枚を、用途に合わせて保存できます。</p>
+            <ExportLinks />
+            <p className="export-hint">
+              HTMLは単体でオフライン再生できます。PowerPointは文字・図解を編集できます。ダッシュボード画面は画像です。
+            </p>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }
