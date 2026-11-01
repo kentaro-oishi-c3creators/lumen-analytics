@@ -2,6 +2,8 @@
 
 **データを、意思のある景色へ。**
 
+[公開サイト](https://kentaro-oishi-c3creators.github.io/lumen-analytics/) · [紹介スライド](https://kentaro-oishi-c3creators.github.io/lumen-analytics/#/story) · [紹介資料PDF](https://kentaro-oishi-c3creators.github.io/lumen-analytics/lumen-design-story.pdf)
+
 4業種のTableau風ダッシュボードと、Claude APIに接続できるAIコックピット。それらを紹介する10枚のインタラクティブなSVGスライドを収録した、React + TypeScript製のサンプルサイトです。
 
 > すべて架空の合成データを使った独立したWebプロトタイプです。TableauのWorkbook（.twb/.twbx）やTableau製品の埋め込みではありません。データソースの接続・Tableau Serverへの発行は含みません。
@@ -63,7 +65,7 @@ bash scripts/publish-github.sh
 3. **Actions → Verify and publish GitHub Pages → Run workflow** を実行します（以後のmainへのpushは自動公開）。
 4. 成功した `deploy` ジョブが返すURLを開きます。
 
-標準URLは `https://kentaro-oishi-c3creators.github.io/lumen-analytics/` です。これは公開先の予定URLであり、リポジトリ作成・デプロイ成功までは利用できません。
+公開URLは `https://kentaro-oishi-c3creators.github.io/lumen-analytics/` です。2026年11月1日にGitHub Pagesへのデプロイ成功を確認しました。以後のmainへのpushも自動公開されます。
 
 Pages用ワークフローは `.github/workflows/pages.yml` に同梱しています。CIでは `npm ci`・8つのテスト・型チェック・Viteビルドを実行し、その成果物をPagesへ発行します。ClaudeのキーをGitHub Actionsに設定する必要はありません。
 
