@@ -14,6 +14,8 @@
 - ブラウザのページ例外：0件。
 - ブラウザ → CORS付きのローカルAPI → 生成関数 → 回答表示をモックで検証。認証失敗の画面表示と、トークンをlocalStorageに残さないことも確認。詳細は `api-browser-verification.json`。
 - Claudeライブ呼び出し：APIキー未提供のため未実施。プロバイダー生成関数のモックを使用してAPIの受け渡しを検証。
-- GitHub新規リポジトリ作成・Pages公開：この環境のGitHub API通信がForbiddenのため未実施。接続済みGitHubツールに新規作成・Pages管理機能がない。公開用スクリプトとActionsワークフローを準備。
+- GitHub配置：`kentaro-oishi-c3creators/lumen-analytics` のmainへ配置済み。最初のREADMEのコミットを親として履歴を保持。
+- GitHub Actions：初回実行（run 41292002327）で依存導入・8件のテスト・型チェック・本番ビルドが成功。
+- Pages公開：初回はリポジトリのPages未有効により `actions/configure-pages` がNot Foundで停止。SourceをGitHub Actionsに変更後、再実行する。
 
 実行コマンド・詳細結果は `browser-verification.json` / `presentation-verification.json` に記録。
