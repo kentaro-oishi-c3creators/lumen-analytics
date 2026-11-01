@@ -24,5 +24,13 @@
   },
   "exportDialogKeyboard": true,
   "mobileOverflow": false,
-  "pageErrors": []
+  "pageErrors": [],
+  "deployment": {
+    "status": "success",
+    "commit": "bd5a1fa6c5df832b1aede14b52aa8a60018b7919",
+    "workflowRun": "https://github.com/kentaro-oishi-c3creators/lumen-analytics/actions/runs/41294373024",
+    "reportedSuccessAt": "2026-11-01T09:44:26Z",
+    "url": "https://kentaro-oishi-c3creators.github.io/lumen-analytics/",
+    "liveBrowserVerified": false
+  }
 }
